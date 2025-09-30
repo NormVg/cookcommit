@@ -56,7 +56,7 @@ def generate_commit_command(
         # Auto-commit if requested
         if auto_commit:
             first_line = extract_first_line(commit_message)
-            result, commit_success = GitService.commit_with_message(first_line)
+            result, commit_success = GitService.commit_with_message(commit_message)
 
             if commit_success:
                 print_success("Successfully committed changes!")
@@ -68,7 +68,7 @@ def generate_commit_command(
             # Show next steps
             steps = [
                 "Copy the message above",
-                f'Run: git commit -m "{extract_first_line(commit_message)}"'
+                f'Run: git commit -m "{commit_message}"'
             ]
             if output_file:
                 steps.append(f"Or use: git commit -F {output_file}")
